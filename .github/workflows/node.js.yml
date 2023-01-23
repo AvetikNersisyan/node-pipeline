@@ -24,5 +24,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: git pull
     - run: npm run build --if-present
+    - run: git fetch --all
+    - run: git checkout main
+    - run: git pull origin main
+    - run: sudo node index.js &
